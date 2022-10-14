@@ -1,16 +1,16 @@
 --// PLAYER INFOS
 local __player = game.Players.LocalPlayer;
-local __giftsPath = __player.PlayerGui.ExclusiveShop.Frame.Container.Gifts;
-local __actualInventorySize = __player.Leaderstats.NumberOfPets.Value;
-local __maxInventorySize = __player.Leaderstats.MaxInventory.Value;
-local __normalCoins = __player.Leaderstats.Coins.Value;
-local __seaCoins = __player.Leaderstats["Sea Coins"].Value;
-local __foodCoins = __player.Leaderstats["Food Coins"].Value;
-local __eventCoins = __player.Leaderstats["Event Coins"].Value;
-local __megaCoins = __player.Leaderstats.MegaCoin.Value;
 local __actualLevel = __player.Leaderstats.Level.Value;
 local __maxLevel = __player.Leaderstats.MaxLevel.Value;
-local __currentWorld = __player.Leaderstats.currentWorld.Value;
+local __actualInventorySize = __player.Leaderstats.NumberOfPets.Value;
+local __maxInventorySize = __player.Leaderstats.MaxInventory.Value;
+local __giftsPath;
+local __normalCoins;
+local __seaCoins;
+local __foodCoins;
+local __eventCoins;
+local __megaCoins;
+local __currentWorld;
 
 --// HELPERS
 function activateButton(button)
@@ -176,7 +176,7 @@ end
 
 --// AUTO FARMING
 local __farmingEnabled = false;
-local __coinsPath = game:GetService("Workspace").__THINGS.Coins[__currentWorld];
+local __coinsPath;
 local __target;
 local __lastTarget;
 
