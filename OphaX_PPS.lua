@@ -91,10 +91,7 @@ function hatchOpen()
 		workspace.__THINGS.__REMOTES.buyEgg:InvokeServer(unpack(args));
         updatePlayerInfos(false, true, false);
 		if (__maxInventorySize - __actualInventorySize > 2) then
-			wait(.5);
-			hatchOpen();
-		else
-			hatchSell();
+            hatchSell();
 		end
 	end
 end
@@ -433,52 +430,52 @@ function adjustSellDropdowns()
         __sellDropdown3:Refresh({"--", "Penguin"},true);
         __sellDropdown4:Refresh({"--", "Seal"},true);
         __sellDropdown5:Refresh({"--", "Musk Ox"},true);
-        __sellDropdown6:Refresh({"--", "??? Spirit"},true);
+        __sellDropdown6:Refresh({"--", "Snow Spirit"},true);
         __sellDropdown1:Set("Arctic Hare");
         __sellDropdown2:Set("Polar Bear");
         __sellDropdown3:Set("Penguin");
         __sellDropdown4:Set("Seal");
         __sellDropdown5:Set("Musk Ox");
-        __sellDropdown6:Set("??? Spirit");
+        __sellDropdown6:Set("Snow Spirit");
     elseif (__actualEgg == "Bone Desert Egg") then
         __sellDropdown1:Refresh({"--", "Desert Fox"},true);
         __sellDropdown2:Refresh({"--", "Lizard"},true);
         __sellDropdown3:Refresh({"--", "Snake"},true);
         __sellDropdown4:Refresh({"--", "Winter Snake"},true);
         __sellDropdown5:Refresh({"--", "Summer Snake"},true);
-        __sellDropdown6:Refresh({"--", "??? Spirit"},true);
+        __sellDropdown6:Refresh({"--", "Cactus Spirit"},true);
         __sellDropdown1:Set("Desert Fox");
         __sellDropdown2:Set("Lizard");
         __sellDropdown3:Set("Snake");
         __sellDropdown4:Set("Winter Snake");
         __sellDropdown5:Set("Summer Snake");
-        __sellDropdown6:Set("??? Spirit");
+        __sellDropdown6:Set("Cactus Spirit");
     elseif (__actualEgg == "Lava Land Egg") then
         __sellDropdown1:Refresh({"--", "Night Dragon"},true);
         __sellDropdown2:Refresh({"--", "Fire Cat"},true);
         __sellDropdown3:Refresh({"--", "Dragon"},true);
         __sellDropdown4:Refresh({"--", "Fire Dog"},true);
         __sellDropdown5:Refresh({"--", "Firecorn"},true);
-        __sellDropdown6:Refresh({"--", "??? Spirit"},true);
+        __sellDropdown6:Refresh({"--", "Lava Spirit"},true);
         __sellDropdown1:Set("Night Dragon");
         __sellDropdown2:Set("Fire Cat");
         __sellDropdown3:Set("Dragon");
         __sellDropdown4:Set("Fire Dog");
         __sellDropdown5:Set("Firecorn");
-        __sellDropdown6:Set("??? Spirit");
+        __sellDropdown6:Set("Lava Spirit");
     elseif (__actualEgg == "Mystical Valley Egg") then
         __sellDropdown1:Refresh({"--", "Crystal Dog"},true);
         __sellDropdown2:Refresh({"--", "Crystal Cat"},true);
         __sellDropdown3:Refresh({"--", "Crystal Dragon"},true);
         __sellDropdown4:Refresh({"--", "Crystalcorn"},true);
         __sellDropdown5:Refresh({"--", "Cerberus"},true);
-        __sellDropdown6:Refresh({"--", "??? Spirit"},true);
+        __sellDropdown6:Refresh({"--", "Mystical Spirit"},true);
         __sellDropdown1:Set("Crystal Dog");
         __sellDropdown2:Set("Crystal Cat");
         __sellDropdown3:Set("Crystal Dragon");
         __sellDropdown4:Set("Crystalcorn");
         __sellDropdown5:Set("Cerberus");
-        __sellDropdown6:Set("??? Spirit");
+        __sellDropdown6:Set("Mystical Spirit");
     elseif (__actualEgg == "Golden Castle Egg") then
         __sellDropdown1:Refresh({"--", "Golden Dog"},true);
         __sellDropdown2:Refresh({"--", "Golden Cat"},true);
@@ -498,33 +495,33 @@ function adjustSellDropdowns()
         __sellDropdown3:Refresh({"--", "Redfish"},true);
         __sellDropdown4:Refresh({"--", "Silver Swordfish"},true);
         __sellDropdown5:Refresh({"--", "Swordfish"},true);
-        __sellDropdown6:Refresh({"--", "??? Spirit"},true);
+        __sellDropdown6:Refresh({"--", "Sea Spirit"},true);
         __sellDropdown1:Set("Sea Urchin");
         __sellDropdown2:Set("Goldfish");
         __sellDropdown3:Set("Redfish");
         __sellDropdown4:Set("Silver Swordfish");
         __sellDropdown5:Set("Swordfish");
-        __sellDropdown6:Set("??? Spirit");
+        __sellDropdown6:Set("Sea Spirit");
     elseif (__actualEgg == "Tiki Land Egg") then
         __sellDropdown1:Refresh({"--", "Tiki Cat"},true);
         __sellDropdown2:Refresh({"--", "Tiki Dog"},true);
         __sellDropdown3:Refresh({"--", "Tiki Monkey"},true);
         __sellDropdown4:Refresh({"--", "Tikicorn"},true);
         __sellDropdown5:Refresh({"--", "Tiki Dragon"},true);
-        __sellDropdown6:Refresh({"--", "??? Spirit"},true);
+        __sellDropdown6:Refresh({"--", "Tiki Spirit"},true);
         __sellDropdown1:Set("Tiki Cat");
         __sellDropdown2:Set("Tiki Dog");
         __sellDropdown3:Set("Tiki Monkey");
         __sellDropdown4:Set("Tikicorn");
         __sellDropdown5:Set("Tiki Dragon");
-        __sellDropdown6:Set("??? Spirit");
+        __sellDropdown6:Set("Tiki Spirit");
     elseif (__actualEgg == "Tropical Island Egg") then
         __sellDropdown1:Refresh({"--", "Toucan"},true);
         __sellDropdown2:Refresh({"--", "Turtle"},true);
         __sellDropdown3:Refresh({"--", "Jellyfish"},true);
         __sellDropdown4:Refresh({"--", "Hammerhead"},true);
         __sellDropdown5:Refresh({"--", "Shark"},true);
-        __sellDropdown6:Refresh({"--", "??? Spirit"},true);
+        __sellDropdown6:Refresh({"--", "Huge Tropical Spirit"},true);
         __sellDropdown1:Set("Toucan");
         __sellDropdown2:Set("Turtle");
         __sellDropdown3:Set("Jellyfish");
@@ -622,7 +619,7 @@ function adjustSellDropdowns()
         __sellDropdown4:Set("Orange Gummy Bear");
         __sellDropdown5:Set("Huge Peppermint");
         __sellDropdown6:Set("--");
-    elseif (__actualEgg == "Dessert Egg") then
+    elseif (__actualEgg == "Dessert Valley Egg") then
         __sellDropdown1:Refresh({"--", "Donut"},true);
         __sellDropdown2:Refresh({"--", "Cookie"},true);
         __sellDropdown3:Refresh({"--", "Ice Cream Sandwich"},true);
@@ -795,7 +792,7 @@ __miscellaneousTab:AddToggle({
 })
 --// GIFT COLLECTOR
 __miscellaneousTab:AddToggle({
-	Name = "Collect Gifts",
+	Name = "Collect Gifts - !!IN MAINTENANCE!!",
 	Default = false,
 	Callback = function(Value)
 		__giftsCollectingEnabled = Value;
