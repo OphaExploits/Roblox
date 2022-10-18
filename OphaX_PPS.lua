@@ -708,14 +708,11 @@ __hatcherGeneralSection:AddDropdown({
 
 --// AUTO SELLER TAB
 
-__sellingTab:AddToggle({
+__sellingTab:AddButton({
 	Name = "Sell Pets",
-	Default = false,
-	Callback = function(Value)
-		if Value then
-			sellPets();
-		end
-	end
+	Callback = function()
+        sellPets();
+  	end    
 })
 
 __sellingTab:AddTextbox({
@@ -801,3 +798,18 @@ __miscellaneousTab:AddToggle({
 		end
 	end
 })
+
+__miscellaneousTab:AddButton({
+	Name = "Open Huge Machine",
+	Callback = function()
+        __player.PlayerGui.HugeMachine.Enabled = true;
+  	end    
+})
+__miscellaneousTab:AddButton({
+	Name = "Open Amalgamator",
+	Callback = function()
+        __player.PlayerGui.Amalgamator.Enabled = true;
+  	end    
+})
+
+OrionLib:Init();
