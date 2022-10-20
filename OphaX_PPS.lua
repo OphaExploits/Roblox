@@ -234,6 +234,61 @@ function autoAnnounce()
     end
 end
 
+--// AUTO SPIN
+local __spinList = {}
+local __hugeMachineGui = __player.PlayerGui.HugeMachine;
+local __autoSpinEnabled = false;
+
+function autoSpin()
+    if (__autoSpinEnabled) then
+        for __actualIndex = 1, #__spinList do
+            for i, v in pairs(__hugeMachineGui.Frame.Container.Pets:GetChildren()) do
+                if (v:IsA('TextButton')) then
+                    if (v.PetType.Value == __spinList[__actualIndex]) then
+                        local args = {
+                            [1] = v.Name,
+                            [2] = "Pet Points"
+                        }
+                        workspace.__THINGS.__REMOTES.confirmSpinWheel:InvokeServer(unpack(args))
+                        wait(1);
+                        autoSpin();
+                        break;
+                    end
+                end
+            end
+        end
+    end
+end
+
+--// UPGRADE PETS
+local __upgradeList = {}
+local __upgradeMaxLevel = 6;
+local __upgradeEnabled = false;
+
+function upgradePets()
+    local __upgradeGui = __player.PlayerGui.Upgrade.Frame;
+
+    for __actualIndex = 1, #__upgradeList do
+        for i, v in pairs(__upgradeGui.Container.Pets:GetChildren()) do
+            if (v:IsA('TextButton')) then
+                if (v.PetType.Value == __upgradeList[__actualIndex]) then
+                    while (v.LevelValue.Value < __upgradeMaxLevel) do
+                        local args = {
+                            [1] = v.Name,
+                            [2] = "Pet Points"
+                        }
+                        workspace.__THINGS.__REMOTES.upgradePet:InvokeServer(unpack(args))
+                    end
+                    wait();
+                end
+            end
+            if (__upgradeGui == false) then
+                break;
+            end
+        end
+	end
+end
+
 
 
 --// GUI ----------------------------------------------------------------------------------------
@@ -253,8 +308,18 @@ local __hatchTab = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
+local __autoSpinTab = Window:MakeTab({
+	Name = "Auto Spin",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 local __sellingTab = Window:MakeTab({
 	Name = "Auto Seller",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local __upgradeTab = Window:MakeTab({
+	Name = "Upgrade Pets",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -810,6 +875,73 @@ __miscellaneousTab:AddButton({
 	Callback = function()
         __player.PlayerGui.Amalgamator.Enabled = true;
   	end    
+})
+__miscellaneousTab:AddButton({
+	Name = "Force Spin",
+	Callback = function()
+        local args = {
+            [1] = __player.PlayerGui.HugeMachine.Frame.SelectedPetUID.Value,
+            [2] = "Pet Points"
+        }
+        workspace.__THINGS.__REMOTES.confirmSpinWheel:InvokeServer(unpack(args));
+  	end    
+})
+
+--// AUTO SPIN TAB
+
+__autoSpinTab:AddTextbox({
+	Name = "Pet List:",
+	Default = "",
+	Save = true,
+	TextDisappear = false,
+	Callback = function(Value)
+		__spinList = {}
+		for w in Value:gmatch("([^,]+)") do
+			table.insert(__spinList, w);
+		end
+	end	  
+})
+__autoSpinTab:AddToggle({
+	Name = "Auto Spin",
+	Default = false,
+	Callback = function(Value)
+		__autoSpinEnabled = Value;
+		if Value then
+			autoSpin();
+		end
+	end
+})
+__autoSpinTab:AddButton({
+	Name = "Force Spin",
+	Callback = function()
+        print("Test")
+        doAmalgamate();
+  	end    
+})
+
+--// UPGRADE TAB
+
+__upgradeTab:AddToggle({
+	Name = "Upgrade Pets",
+	Default = false,
+	Callback = function(Value)
+		__upgradeEnabled = Value;
+		if Value then
+			upgradePets();
+		end
+	end
+})
+__upgradeTab:AddTextbox({
+	Name = "Pet List:",
+	Default = "",
+	Save = true,
+	TextDisappear = false,
+	Callback = function(Value)
+		__upgradeList = {}
+		for w in Value:gmatch("([^,]+)") do
+			table.insert(__upgradeList, w);
+		end
+	end	  
 })
 
 OrionLib:Init();
