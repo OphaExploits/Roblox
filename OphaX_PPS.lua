@@ -842,7 +842,10 @@ __marketplaceTab:AddSlider({
 
 --// MISCELLANEOUS TAB
 --// REBIRTH
-__miscellaneousTab:AddToggle({
+local __miscFunctions = __miscellaneousTab:AddSection({
+	Name = "Misc. Functions:"
+})
+__miscFunctions:AddToggle({
 	Name = "Auto Rebirth",
 	Default = false,
 	Callback = function(Value)
@@ -853,7 +856,7 @@ __miscellaneousTab:AddToggle({
 	end
 })
 --// GIFT COLLECTOR
-__miscellaneousTab:AddToggle({
+__miscFunctions:AddToggle({
 	Name = "Collect Gifts - !!IN MAINTENANCE!!",
 	Default = false,
 	Callback = function(Value)
@@ -863,27 +866,19 @@ __miscellaneousTab:AddToggle({
 		end
 	end
 })
-
-__miscellaneousTab:AddButton({
+local __openMachines = __miscellaneousTab:AddSection({
+	Name = "Machines:"
+})
+__openMachines:AddButton({
 	Name = "Open Huge Machine",
 	Callback = function()
         __player.PlayerGui.HugeMachine.Enabled = true;
   	end    
 })
-__miscellaneousTab:AddButton({
+__openMachines:AddButton({
 	Name = "Open Amalgamator",
 	Callback = function()
         __player.PlayerGui.Amalgamator.Enabled = true;
-  	end    
-})
-__miscellaneousTab:AddButton({
-	Name = "Force Spin",
-	Callback = function()
-        local args = {
-            [1] = __player.PlayerGui.HugeMachine.Frame.SelectedPetUID.Value,
-            [2] = "Pet Points"
-        }
-        workspace.__THINGS.__REMOTES.confirmSpinWheel:InvokeServer(unpack(args));
   	end    
 })
 
