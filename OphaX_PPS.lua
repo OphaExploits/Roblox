@@ -251,8 +251,7 @@ function autoSpin()
                         }
                         workspace.__THINGS.__REMOTES.confirmSpinWheel:InvokeServer(unpack(args))
                         wait(1);
-                        autoSpin();
-                        break;
+                        return autoSpin();
                     end
                 end
             end
@@ -288,6 +287,26 @@ function upgradePets()
         end
 	end
 end
+
+--// CHAT CORRECTION
+local __chatCorrectionEnabled = true;
+
+function chatCorrection()
+    if (__chatCorrectionEnabled) then
+        for i, v in pairs(__player.PlayerGui.Chat.Frame.ChatChannelParentFrame["Frame_MessageLogDisplay"].Scroller:GetChildren()) do
+            if (v:IsA('Frame')) then
+                local __tempStr = v.TextLabel.Text;
+                if (__tempStr:match(__player.Name.." spun an EXCLUSIVE Huge")) then
+                    v.TextLabel.TextColor3 = Color3.fromRGB(0,255,255);
+                    v.TextLabel.Font = "GothamBold";
+                end
+            end
+        end
+        wait(.1);
+        task.spawn(chatCorrection);
+    end
+end
+chatCorrection()
 
 
 
